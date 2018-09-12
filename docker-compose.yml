@@ -29,6 +29,7 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper:2181
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
+      SCHEMA_REGISTRY_AVRO_COMPATIBILITY_LEVEL: full_transitive
   control-center:
     image: confluentinc/cp-enterprise-control-center:5.0.0
     container_name: control-center
@@ -39,7 +40,6 @@ services:
       CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
       CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
       CONTROL_CENTER_STREAMS_NUM_STREAM_THREADS: 2
-      CONTROL_CENTER_CONNECT_CLUSTER: http://kafka-connect:8082
     ports:
       - 9021:9021
     depends_on:
